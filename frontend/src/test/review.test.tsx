@@ -1,0 +1,12 @@
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query'
+import {render,screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import {MemoryRouter,Route,Routes} from 'react-router-dom'
+import {describe,expect,it,vi} from 'vitest'
+import {api} from '../api/client'
+import {ReviewPage} from '../pages/ReviewPage'
+vi.mock('../api/client',()=>({api:vi.fn()}))
+vi.mock('react-pdf',()=>({pdfjs:{GlobalWorkerOptions:{}},Document:({children}:{children:unknown})=><div>{children as never}</div>,Page:()=> <div>PDF page</div>}))
+const doc={id:'doc',original_filename:'invoice.pdf',mime_type:'application/pdf',file_size:100,status:'review_required',selected_processor_id:'p',page_count:1,error_message_safe:null,created_at:new Date().toISOString(),updated_at:new Date().toISOString(),latest_extraction_id:'run'}
+const extraction={id:'run',data:{total:100},effective_data:{total:100},fields:[{id:'field',json_path:'$.total',field_label:'Total',value_json:100,effective_value:100,confidence:.62,confidence_level:'low',validation_state:'passed',review_state:'pending',evidence:[{page_number:1,bbox:null,source_text:'Total 100',evidence_strength:.8}]}],validations:[],validation_summary:{failed:0,passed:1},review_summary:{reviewed:0,total:1}}
+describe('review interaction',()=>{it('edits a field and submits a correction',async()=>{const mocked=vi.mocked(api);mocked.mockImplementation(async path=>{if(path==='/documents/doc')return doc as never;if(path.includes('/pages'))return {pages:[{page_number:1,width:600,height:800,text:'Total 100'}],original_url:'x',mime_type:'application/pdf'} as never;if(path.includes('/extractions/'))return extraction as never;return {} as never});const client=new QueryClient({defaultOptions:{queries:{retry:false}}});render(<MemoryRouter initialEntries={['/documents/doc/review']}><QueryClientProvider client={client}><Routes><Route path="/documents/:id/review" element={<ReviewPage/>}/></Routes></QueryClientProvider></MemoryRouter>);expect(await screen.findByText('62% · Low')).toBeInTheDocument();await userEvent.click(screen.getByTitle('Correct field'));const input=screen.getByDisplayValue('100');await userEvent.clear(input);await userEvent.type(input,'125');await userEvent.click(screen.getByLabelText('Save correction'));expect(mocked).toHaveBeenCalledWith('/documents/doc/review/fields',expect.objectContaining({method:'POST',body:expect.stringContaining('125')}))})})

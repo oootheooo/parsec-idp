@@ -1,0 +1,23 @@
+{
+  "project": "HANDL Document Intelligence",
+  "purpose": "Codex-ready full application build specification",
+  "documents": [
+    "00_MASTER_CODEX_PROMPT.md",
+    "AGENTS.md",
+    "01_PRODUCT_CONTEXT.md",
+    "02_PRD.md",
+    "03_TECHNICAL_ARCHITECTURE.md",
+    "04_DATA_MODEL.md",
+    "05_API_SPEC.md",
+    "06_DOCUMENT_PROCESSING_SPEC.md",
+    "07_UX_UI_SPEC.md",
+    "08_SECURITY_PRIVACY.md",
+    "09_TEST_AND_ACCEPTANCE.md",
+    "10_DEPLOYMENT_AND_OPERATIONS.md",
+    "11_IMPLEMENTATION_PLAN.md",
+    "12_SAMPLE_PROCESSOR_SCHEMAS.md",
+    "13_DECISIONS_AND_RATIONALE.md",
+    "README_FOR_CODEX.md"
+  ],
+  "recommended_entrypoint": "00_MASTER_CODEX_PROMPT.md"
+}

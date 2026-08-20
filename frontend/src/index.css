@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --parse-ink: 24 31 28;
+    --parse-ink-soft: 62 72 67;
+    --parse-paper: 249 250 248;
+    --parse-surface: 255 255 255;
+    --parse-line: 225 229 225;
+    --parse-line-strong: 205 212 207;
+    --parse-brand: 61 111 91;
+    --parse-brand-strong: 42 82 67;
+    --parse-brand-soft: 232 242 237;
+    --parse-brand-mist: 244 248 246;
+    --parse-danger: 178 62 62;
+    --parse-warning: 155 105 31;
+    --parse-radius-sm: 8px;
+    --parse-radius-md: 12px;
+    --parse-radius-lg: 18px;
+    --parse-shadow-sm: 0 1px 2px rgb(20 29 25 / 0.04);
+    --parse-shadow-md: 0 10px 30px -18px rgb(20 29 25 / 0.22);
+    --parse-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --parse-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --parse-motion-fast: 110ms;
+    --parse-motion-standard: 180ms;
+    --parse-motion-slow: 260ms;
+  }
+
+  * {
+    @apply border-line;
+  }
+  html {
+    @apply bg-paper;
+  }
+  body {
+    @apply m-0 bg-paper font-sans text-ink antialiased;
+    font-feature-settings:
+      "ss01" 1,
+      "cv02" 1,
+      "cv03" 1;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    @apply font-sans;
+  }
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: rgb(var(--parse-brand) / 0.18);
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand/50 ring-offset-2;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .display-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+  }
+  .page-shell {
+    @apply mx-auto w-full max-w-[1280px];
+    animation: page-in 0.35s var(--parse-ease) both;
+  }
+  .page-title {
+    @apply text-[2.15rem] leading-[1.05] text-ink md:text-[2.55rem];
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+  }
+  .page-kicker {
+    @apply mb-3 text-[11px] font-semibold uppercase tracking-[.16em] text-brand;
+  }
+  .page-description {
+    @apply mt-2 max-w-2xl text-sm leading-6 text-ink-soft;
+  }
+  .muted {
+    @apply text-sm leading-6 text-ink-soft;
+  }
+  .page-header {
+    @apply flex flex-wrap items-end justify-between gap-6 border-b border-line pb-7;
+  }
+  .page-toolbar {
+    @apply flex flex-wrap items-center gap-3 border-y border-line py-3;
+  }
+
+  .btn {
+    @apply relative inline-flex min-h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-45;
+    transform: translateZ(0);
+    transition:
+      transform var(--parse-motion-fast) var(--parse-ease),
+      background-color var(--parse-motion-standard) ease,
+      border-color var(--parse-motion-standard) ease,
+      color var(--parse-motion-standard) ease,
+      box-shadow var(--parse-motion-standard) var(--parse-ease);
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.985);
+    transition-duration: 70ms;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white shadow-sm hover:bg-black hover:shadow-md;
+  }
+  .btn-brand {
+    @apply btn bg-brand text-white shadow-sm hover:bg-brand-strong hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply btn border border-line-strong bg-white text-ink shadow-[var(--parse-shadow-sm)] hover:border-gray-400 hover:bg-paper;
+  }
+  .btn-ghost {
+    @apply btn text-ink-soft hover:bg-black/[.045] hover:text-ink;
+  }
+  .btn-icon {
+    @apply btn-ghost h-9 min-h-9 w-9 px-0;
+  }
+  .btn-icon:hover svg {
+    transform: scale(1.04);
+  }
+  .btn svg {
+    transition: transform var(--parse-motion-standard) var(--parse-ease-out);
+  }
+  .btn:hover [data-parse-icon="upload"] {
+    transform: translateY(-1.5px);
+  }
+
+  .input {
+    @apply w-full rounded-md border border-line-strong bg-white px-3 py-2.5 text-sm text-ink shadow-[var(--parse-shadow-sm)] placeholder:text-gray-400 hover:border-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/15;
+    transition:
+      border-color var(--parse-motion-standard) ease,
+      box-shadow var(--parse-motion-standard) ease,
+      background-color var(--parse-motion-standard) ease;
+  }
+  select.input {
+    @apply cursor-pointer;
+  }
+  textarea.input {
+    @apply leading-6;
+  }
+  .label {
+    @apply mb-2 block text-[13px] font-medium text-ink;
+  }
+  .help-text {
+    @apply mt-2 text-xs leading-5 text-ink-soft;
+  }
+
+  .card {
+    @apply rounded-lg border border-line bg-white shadow-[var(--parse-shadow-sm)];
+  }
+  .card-interactive {
+    @apply card hover:border-line-strong hover:shadow-[var(--parse-shadow-md)];
+    transition:
+      transform var(--parse-motion-standard) var(--parse-ease-out),
+      border-color var(--parse-motion-standard) ease,
+      box-shadow var(--parse-motion-standard) var(--parse-ease-out);
+  }
+  .card-interactive:hover {
+    transform: translateY(-2px);
+  }
+  .card-interactive:active {
+    transform: translateY(0);
+  }
+  .section-header {
+    @apply flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-4;
+  }
+  .section-title {
+    @apply text-sm font-semibold tracking-[-.01em] text-ink;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full border border-transparent px-2.5 py-1 text-[11px] font-medium capitalize leading-none;
+  }
+  .status-change {
+    animation: status-change var(--parse-motion-slow) var(--parse-ease-out) both;
+  }
+  .tabs {
+    @apply flex gap-1 border-b border-line;
+  }
+  .tab {
+    @apply relative px-4 py-3 text-sm font-medium text-ink-soft hover:text-ink;
+    transition: color var(--parse-motion-standard) ease;
+  }
+  .tab::after {
+    content: "";
+    @apply absolute inset-x-3 bottom-[-1px] h-[2px] bg-brand;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--parse-motion-standard) var(--parse-ease-out);
+  }
+  .tab-active {
+    @apply text-ink;
+  }
+  .tab-active::after {
+    transform: scaleX(1);
+  }
+  .data-table {
+    @apply w-full text-left text-sm;
+  }
+  .data-table thead {
+    @apply border-b border-line bg-paper/70 text-[11px] font-medium uppercase tracking-[.08em] text-ink-soft;
+  }
+  .data-table th {
+    @apply px-5 py-3 font-medium;
+  }
+  .data-table td {
+    @apply px-5 py-4;
+  }
+  .data-table tbody {
+    @apply divide-y divide-line;
+  }
+  .data-table tbody tr {
+    @apply hover:bg-brand-mist/60;
+    transition: background-color var(--parse-motion-fast) ease;
+  }
+  .data-table tbody tr:active {
+    @apply bg-brand-mist;
+  }
+  .notice {
+    @apply rounded-md border px-4 py-3 text-sm;
+    animation: notice-in var(--parse-motion-slow) var(--parse-ease-out) both;
+  }
+  .notice-success {
+    @apply notice border-brand/20 bg-brand-mist text-brand-strong;
+  }
+  .notice-danger {
+    @apply notice border-red-200 bg-red-50 text-red-700;
+  }
+  .notice-warning {
+    @apply notice border-amber-200 bg-amber-50 text-amber-800;
+  }
+
+  .parse-grid {
+    background-image:
+      linear-gradient(rgb(var(--parse-line) / 0.48) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--parse-line) / 0.48) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, black 20%, transparent 90%);
+  }
+  .processing-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .processing-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--parse-brand) / 0.45),
+      transparent
+    );
+    animation: scan 2.4s ease-in-out infinite;
+  }
+  .motion-underline {
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: underline-in var(--parse-motion-standard) var(--parse-ease-out)
+      forwards;
+  }
+  .page-swap {
+    animation: page-swap var(--parse-motion-slow) var(--parse-ease-out) both;
+  }
+  .field-row {
+    transition:
+      background-color var(--parse-motion-fast) ease,
+      border-color var(--parse-motion-fast) ease,
+      box-shadow var(--parse-motion-fast) ease;
+  }
+  .field-row:active {
+    transform: scale(0.998);
+  }
+  .evidence-in {
+    animation: evidence-in var(--parse-motion-standard) var(--parse-ease-out)
+      both;
+  }
+  .review-control {
+    transition:
+      background-color var(--parse-motion-fast) ease,
+      transform var(--parse-motion-fast) var(--parse-ease);
+  }
+  .review-control:hover {
+    transform: translateY(-1px);
+  }
+  .review-control:active {
+    transform: scale(0.94);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes underline-in {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes status-change {
+  from {
+    opacity: 0.35;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-swap {
+  from {
+    opacity: 0.55;
+    transform: translateX(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes evidence-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scan {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
