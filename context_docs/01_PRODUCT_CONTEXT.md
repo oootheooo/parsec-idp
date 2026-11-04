@@ -1,7 +1,7 @@
 # Product Context
 
 ## Product name
-**HANDL Document Intelligence**
+**Parsec**
 
 Working descriptor:
 > Universal document extraction, review, and automation infrastructure for business workflows.
@@ -86,7 +86,7 @@ Initial:
 - BPO/shared services;
 - agencies/software integrators;
 - SMEs with document-heavy workflows;
-- internal HANDL client projects.
+- internal Parsec client projects.
 
 Future:
 - enterprise document automation;

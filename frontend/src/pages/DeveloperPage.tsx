@@ -192,7 +192,7 @@ export function DeveloperPage() {
             <h2 className="section-title">Upload with the API</h2>
           </div>
           <pre className="m-4 overflow-auto rounded-md bg-ink p-5 text-sm leading-6 text-brand-soft">
-            <code>{`curl -X POST http://localhost:8000/api/v1/documents/upload \\\n  -H "Authorization: Bearer hdl_live_…" \\\n  -F "file=@invoice.pdf" \\\n  -F "processor_id=<processor-uuid>"`}</code>
+            <code>{`curl -X POST http://localhost:8000/api/v1/documents/upload \\\n  -H "Authorization: Bearer psc_live_…" \\\n  -F "file=@invoice.pdf" \\\n  -F "processor_id=<processor-uuid>"`}</code>
           </pre>
         </section>
       )}

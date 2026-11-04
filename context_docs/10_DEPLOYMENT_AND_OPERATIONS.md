@@ -42,7 +42,7 @@ REDIS_URL=redis://redis:6379/0
 S3_ENDPOINT_URL=http://minio:9000
 S3_ACCESS_KEY=
 S3_SECRET_KEY=
-S3_BUCKET=handl-documents
+S3_BUCKET=parsec-documents
 S3_REGION=us-east-1
 S3_FORCE_PATH_STYLE=true
 

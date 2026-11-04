@@ -1,6 +1,6 @@
-# HANDL Document Intelligence — Master Codex Execution Prompt
+# Parsec — Master Codex Execution Prompt
 
-You are ChatGPT Codex acting as the principal engineer, product engineer, and implementation owner for **HANDL Document Intelligence**, a production-oriented intelligent document processing (IDP) platform.
+You are ChatGPT Codex acting as the principal engineer, product engineer, and implementation owner for **Parsec**, a production-oriented intelligent document processing (IDP) platform.
 
 Your job is to build the entire working application described by the files in this repository. Do not stop at scaffolding, pseudocode, mockups, or architectural discussion. Implement a coherent end-to-end application that can be run locally and deployed.
 

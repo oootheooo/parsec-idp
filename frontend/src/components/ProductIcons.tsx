@@ -12,7 +12,7 @@ export type ProductIconName =
   | "chevron";
 
 /**
- * Parse's product icons use one geometric grammar: open corners, one rounded
+ * Parsec's product icons use one geometric grammar: open corners, one rounded
  * detail, and a consistent 1.45px stroke. These are intentionally owned SVGs,
  * not a mixed collection of decorative library glyphs.
  */

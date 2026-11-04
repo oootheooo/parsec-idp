@@ -1,6 +1,6 @@
 # Implementation Decisions
 
-- The working product name is **Parse**, shown as “Parse by Handl”; internal API key and webhook header prefixes remain `hdl_` / `X-Handl-*` for compatibility with the supplied specification.
+- The product name is **Parsec**. API keys use the `psc_` prefix; webhook headers use `X-Parsec-*`.
 - Multipart upload is used for the initial local flow. It validates and stores bytes but never parses synchronously; the endpoint persists a queued job and dispatches Celery.
 - Canonical JSON is stored in PostgreSQL JSONB for the MVP. The model includes object-storage fields so large representations can move without changing the public contract.
 - Docling is the primary broad-format converter in the worker image. PyMuPDF supplies dependable PDF page/block geometry and is also the fallback when Docling is unavailable.

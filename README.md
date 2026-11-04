@@ -1,6 +1,6 @@
-# Parse (Handl Parse)
+# Parsec
 
-Parse is a multi-tenant document intelligence application that turns PDFs, images, Office files, and text documents into schema-conforming, evidence-backed data with validation and human review.
+Parsec is a multi-tenant document intelligence application that turns PDFs, images, Office files, and text documents into schema-conforming, evidence-backed data with validation and human review.
 
 ## Run locally
 
@@ -18,7 +18,7 @@ cp .env.example .env
 
 Open:
 
-- Parse web app: http://localhost:5173
+- Parsec web app: http://localhost:5173
 - API documentation: http://localhost:8000/docs
 - API health: http://localhost:8000/health
 - MinIO console: http://localhost:9001 (`minioadmin` / `minioadmin` in the default local configuration)
@@ -65,7 +65,7 @@ Create an API key in the UI, then:
 
 ```bash
 curl -X POST 'http://localhost:8000/api/v1/documents/upload?processor_id=<processor-uuid>' \
-  -H 'Authorization: Bearer hdl_live_…' \
+  -H 'Authorization: Bearer psc_live_…' \
   -F 'file=@invoice.pdf'
 ```
 
@@ -103,7 +103,7 @@ alembic upgrade head
 python -m app.seed
 ```
 
-Health endpoints are `/health` and `/ready`. Webhooks use `X-Handl-*` headers with an HMAC SHA-256 signature over `{timestamp}.{raw_body}` and are delivered without redirects.
+Health endpoints are `/health` and `/ready`. Webhooks use `X-Parsec-*` headers with an HMAC SHA-256 signature over `{timestamp}.{raw_body}` and are delivered without redirects.
 
 ## Operational notes
 

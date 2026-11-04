@@ -1,7 +1,7 @@
 const API_URL=import.meta.env.VITE_API_URL||'http://localhost:8000/api/v1'
-let accessToken=localStorage.getItem('handl_access')
-let workspaceId=localStorage.getItem('handl_workspace')
-export const session={get token(){return accessToken},setToken(value:string|null){accessToken=value;if(value)localStorage.setItem('handl_access',value);else localStorage.removeItem('handl_access')},get workspace(){return workspaceId},setWorkspace(value:string|null){workspaceId=value;if(value)localStorage.setItem('handl_workspace',value);else localStorage.removeItem('handl_workspace')}}
+let accessToken=localStorage.getItem('parsec_access')
+let workspaceId=localStorage.getItem('parsec_workspace')
+export const session={get token(){return accessToken},setToken(value:string|null){accessToken=value;if(value)localStorage.setItem('parsec_access',value);else localStorage.removeItem('parsec_access')},get workspace(){return workspaceId},setWorkspace(value:string|null){workspaceId=value;if(value)localStorage.setItem('parsec_workspace',value);else localStorage.removeItem('parsec_workspace')}}
 
 async function refresh(){const response=await fetch(`${API_URL}/auth/refresh`,{method:'POST',credentials:'include'});if(!response.ok)return false;const data=await response.json();session.setToken(data.access_token);return true}
 

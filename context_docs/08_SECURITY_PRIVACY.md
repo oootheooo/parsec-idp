@@ -37,7 +37,7 @@ Return 404 for inaccessible tenant resources where appropriate to avoid informat
 ## 4. API keys
 
 Format example:
-`hdl_live_<random>`
+`psc_live_<random>`
 
 - at least 32 bytes random secret;
 - store cryptographic hash;

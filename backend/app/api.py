@@ -97,12 +97,12 @@ def page(items: list[Any], total: int, page_no: int, size: int) -> dict[str, Any
 
 
 async def issue_session(db: AsyncSession, user: User, request: Request, response: Response, family_id: uuid.UUID | None = None) -> str:
-    refresh = opaque_token("hdl_refresh_")
+    refresh = opaque_token("psc_refresh_")
     session = RefreshSession(user_id=user.id, token_hash=token_hash(refresh), family_id=family_id or uuid.uuid4(),
                              expires_at=now() + timedelta(days=settings.refresh_token_days), user_agent=request.headers.get("user-agent", "")[:500])
     db.add(session)
     await db.commit()
-    response.set_cookie("handl_refresh", refresh, httponly=True, secure=settings.secure_cookies, samesite="lax",
+    response.set_cookie("parsec_refresh", refresh, httponly=True, secure=settings.secure_cookies, samesite="lax",
                         max_age=settings.refresh_token_days * 86400, path="/api/v1/auth")
     return create_access_token(str(user.id))
 
@@ -131,10 +131,10 @@ async def login(payload: LoginIn, request: Request, response: Response, db: DB) 
 
 
 @router.post("/auth/refresh", response_model=TokenOut)
-async def refresh(request: Request, response: Response, db: DB, handl_refresh: Annotated[str | None, Cookie()] = None) -> TokenOut:
-    if not handl_refresh:
+async def refresh(request: Request, response: Response, db: DB, parsec_refresh: Annotated[str | None, Cookie()] = None) -> TokenOut:
+    if not parsec_refresh:
         raise HTTPException(401, "Refresh session required")
-    session = await db.scalar(select(RefreshSession).where(RefreshSession.token_hash == token_hash(handl_refresh)))
+    session = await db.scalar(select(RefreshSession).where(RefreshSession.token_hash == token_hash(parsec_refresh)))
     if not session or session.revoked_at or session.expires_at <= now():
         raise HTTPException(401, "Refresh session expired")
     session.revoked_at = now()
@@ -147,11 +147,11 @@ async def refresh(request: Request, response: Response, db: DB, handl_refresh: A
 
 
 @router.post("/auth/logout", status_code=204)
-async def logout(response: Response, db: DB, handl_refresh: Annotated[str | None, Cookie()] = None) -> None:
-    if handl_refresh:
-        session = await db.scalar(select(RefreshSession).where(RefreshSession.token_hash == token_hash(handl_refresh)))
+async def logout(response: Response, db: DB, parsec_refresh: Annotated[str | None, Cookie()] = None) -> None:
+    if parsec_refresh:
+        session = await db.scalar(select(RefreshSession).where(RefreshSession.token_hash == token_hash(parsec_refresh)))
         if session: session.revoked_at = now(); await db.commit()
-    response.delete_cookie("handl_refresh", path="/api/v1/auth")
+    response.delete_cookie("parsec_refresh", path="/api/v1/auth")
 
 
 @router.get("/me")
@@ -512,7 +512,7 @@ async def api_keys(principal: WorkspaceAuth, db: DB) -> list[dict[str, Any]]:
 
 @router.post("/api-keys", status_code=201)
 async def create_api_key(payload: ApiKeyIn, principal: WorkspaceAuth, db: DB) -> dict[str, Any]:
-    require_admin(principal); plaintext = opaque_token("hdl_live_"); user_id = principal.user.id if principal.user else principal.api_key.created_by_user_id
+    require_admin(principal); plaintext = opaque_token("psc_live_"); user_id = principal.user.id if principal.user else principal.api_key.created_by_user_id
     item = ApiKey(workspace_id=principal.workspace_id, name=payload.name, key_prefix=plaintext[:18], key_hash=token_hash(plaintext), expires_at=payload.expires_at, created_by_user_id=user_id)
     db.add(item); await db.commit(); result=serialize(item, "key_hash"); result["key"] = plaintext; return result
 

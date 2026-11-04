@@ -205,7 +205,7 @@ Plaintext returned once.
 ### DELETE `/api-keys/{id}`
 
 API-key request header:
-`Authorization: Bearer hdl_live_...`
+`Authorization: Bearer psc_live_...`
 
 Backend distinguishes JWT vs API key format safely.
 
@@ -220,10 +220,10 @@ Backend distinguishes JWT vs API key format safely.
 ### POST `/webhook-deliveries/{id}/retry`
 
 Webhook headers:
-- `X-Handl-Event`
-- `X-Handl-Delivery-ID`
-- `X-Handl-Timestamp`
-- `X-Handl-Signature`
+- `X-Parsec-Event`
+- `X-Parsec-Delivery-ID`
+- `X-Parsec-Timestamp`
+- `X-Parsec-Signature`
 
 Suggested signing base:
 `{timestamp}.{raw_body}`

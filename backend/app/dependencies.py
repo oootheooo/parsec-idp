@@ -30,7 +30,7 @@ async def get_principal(
     if not credentials:
         raise HTTPException(status_code=401, detail="Authentication required")
     token = credentials.credentials
-    if token.startswith("hdl_live_"):
+    if token.startswith("psc_live_"):
         key = await db.scalar(select(ApiKey).where(ApiKey.key_hash == token_hash(token)))
         if not key or key.revoked_at or (key.expires_at and key.expires_at <= datetime.now(timezone.utc)):
             raise HTTPException(status_code=401, detail="Invalid API key")

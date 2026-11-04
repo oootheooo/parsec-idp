@@ -10,7 +10,7 @@ from app.db import engine
 from app.services.processing import process_document
 from app.services.webhooks import deliver
 
-celery_app = Celery("handl_parse", broker=settings.redis_url, backend=settings.redis_url)
+celery_app = Celery("parsec", broker=settings.redis_url, backend=settings.redis_url)
 celery_app.conf.update(task_track_started=True, task_serializer="json", accept_content=["json"], result_serializer="json",
                        task_always_eager=settings.celery_task_always_eager, task_routes={"app.worker.process_document_task": {"queue": "document_parse"}})
 

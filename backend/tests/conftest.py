@@ -1,6 +1,6 @@
 import os
 
-os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///./test_handl.db"
+os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///./test_parsec.db"
 os.environ["APP_ENV"] = "test"
 os.environ["EXTRACTION_PROVIDER"] = "mock"
 os.environ["CELERY_TASK_ALWAYS_EAGER"] = "true"

@@ -1,5 +1,5 @@
 {
-  "project": "HANDL Document Intelligence",
+  "project": "Parsec",
   "purpose": "Codex-ready full application build specification",
   "documents": [
     "00_MASTER_CODEX_PROMPT.md",

@@ -1,6 +1,6 @@
-# Parse Design System
+# Parsec Design System
 
-Parse uses an editorial, product-first interface inspired by Exa's restraint: generous white space, serif display type, near-black primary actions, fine neutral borders, and compact interactive surfaces. It is an interpretation for document operations, not a copy of Exa's brand. This system governs product structure and placement—not only styling.
+Parsec uses an editorial, product-first interface inspired by Exa's restraint: generous white space, serif display type, near-black primary actions, fine neutral borders, and compact interactive surfaces. It is an interpretation for document operations, not a copy of Exa's brand. This system governs product structure and placement—not only styling.
 
 ## Principles
 
@@ -13,15 +13,15 @@ Parse uses an editorial, product-first interface inspired by Exa's restraint: ge
 
 ## Brand identity
 
-- Use the text wordmark **Parse** with the optional qualifier **by Handl**.
-- Parse has no approved symbol or logo yet. Do not use a `P` tile, letter avatar, generated mark, or placeholder logo anywhere in the product.
+- Use the text wordmark **Parsec**.
+- Parsec has no approved symbol or logo yet. Do not use a `P` tile, letter avatar, generated mark, or placeholder logo anywhere in the product.
 - Until a permanent identity is approved, the wordmark must remain plain text and must not be turned into a pseudo-logo with a box, circle, gradient, or badge.
 
 ## Application framework
 
 The desktop product uses a single horizontal application rail. It contains, in order:
 
-1. Parse wordmark at the left;
+1. Parsec wordmark at the left;
 2. primary product navigation in the center-left;
 3. workspace selector and global upload action at the right;
 4. restrained account information and logout control at the far right.

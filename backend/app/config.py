@@ -12,13 +12,13 @@ class Settings(BaseSettings):
     app_secret_key: str = "development-secret-change-me-32-characters"
     frontend_url: str = "http://localhost:5173"
     cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:5173"]
-    database_url: str = "postgresql+asyncpg://handl:handl@localhost:5432/handl"
+    database_url: str = "postgresql+asyncpg://parsec:parsec@localhost:5432/parsec"
     redis_url: str = "redis://localhost:6379/0"
     s3_endpoint_url: str | None = "http://localhost:9000"
     s3_public_endpoint_url: str | None = None
     s3_access_key: str = "minioadmin"
     s3_secret_key: str = "minioadmin"
-    s3_bucket: str = "handl-documents"
+    s3_bucket: str = "parsec-documents"
     s3_region: str = "us-east-1"
     s3_force_path_style: bool = True
     jwt_secret: str = "development-jwt-change-me-32-characters"

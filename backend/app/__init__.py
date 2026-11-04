@@ -1,1 +1,1 @@
-"""Parse (Handl Parse) backend."""
+"""Parsec backend."""

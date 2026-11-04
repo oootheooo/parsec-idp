@@ -1,4 +1,4 @@
-# HANDL Document Intelligence — Build Pack
+# Parsec — Build Pack
 
 This folder is a requirements and execution pack intended to be placed at the root of a new repository and given to ChatGPT Codex.
 

@@ -1,4 +1,4 @@
-"""Initial Parse schema."""
+"""Initial Parsec schema."""
 from alembic import op
 from app.db import Base
 from app import models  # noqa: F401

@@ -1,7 +1,7 @@
 # AGENTS.md — Repository Rules for Codex
 
 ## Product
-HANDL Document Intelligence is a multi-tenant intelligent document processing platform that turns arbitrary business documents into structured, validated, reviewable data.
+Parsec is a multi-tenant intelligent document processing platform that turns arbitrary business documents into structured, validated, reviewable data.
 
 ## Engineering principles
 

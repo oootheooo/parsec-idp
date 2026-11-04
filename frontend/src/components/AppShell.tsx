@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth";
 import { ProductIcon, type ProductIconName } from "./ProductIcons";
-import { ParseLogo } from "./UI";
+import { ParsecLogo } from "./UI";
 
 const links: ReadonlyArray<[string, string, ProductIconName]> = [
   ["/", "Overview", "overview"],
@@ -20,7 +20,7 @@ export function AppShell() {
       <header className="sticky top-0 z-30 border-b border-line bg-white/95 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-[1480px] items-center px-4 md:px-7">
           <div className="flex w-28 shrink-0 items-center md:w-40">
-            <ParseLogo />
+            <ParsecLogo />
           </div>
 
           <nav

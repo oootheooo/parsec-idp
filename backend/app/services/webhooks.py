@@ -39,9 +39,9 @@ async def deliver(delivery_id: uuid.UUID) -> None:
         body = json.dumps(delivery.payload, separators=(",", ":"), default=str).encode()
         timestamp = str(int(datetime.now(timezone.utc).timestamp()))
         secret = hook.secret_encrypted_or_managed.decode()
-        headers = {"Content-Type": "application/json", "X-Handl-Event": delivery.event_type,
-                   "X-Handl-Delivery-ID": str(delivery.id), "X-Handl-Timestamp": timestamp,
-                   "X-Handl-Signature": webhook_signature(secret, timestamp, body)}
+        headers = {"Content-Type": "application/json", "X-Parsec-Event": delivery.event_type,
+                   "X-Parsec-Delivery-ID": str(delivery.id), "X-Parsec-Timestamp": timestamp,
+                   "X-Parsec-Signature": webhook_signature(secret, timestamp, body)}
         try:
             validate_webhook_url(hook.url)
             async with httpx.AsyncClient(timeout=10, follow_redirects=False) as client:

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useAuth } from "../auth";
-import { ParseLogo } from "../components/UI";
+import { ParsecLogo } from "../components/UI";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -41,7 +41,7 @@ export function AuthPage() {
   return (
     <div className="min-h-screen bg-paper">
       <header className="mx-auto flex h-16 max-w-[1280px] items-center border-b border-line px-5 md:px-8">
-        <ParseLogo />
+        <ParsecLogo />
       </header>
       <main className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-[1280px] place-items-center px-5 py-12 md:px-8">
         <section className="w-full max-w-md">

@@ -2,11 +2,11 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: handl
-      POSTGRES_PASSWORD: handl
-      POSTGRES_DB: handl
+      POSTGRES_USER: parsec
+      POSTGRES_PASSWORD: parsec
+      POSTGRES_DB: parsec
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U handl"]
+      test: ["CMD-SHELL", "pg_isready -U parsec"]
       interval: 3s
       timeout: 3s
       retries: 20
@@ -30,7 +30,7 @@ services:
     image: minio/mc:latest
     depends_on: [minio]
     entrypoint: ["/bin/sh", "-c"]
-    command: ["until mc alias set local http://minio:9000 minioadmin minioadmin; do sleep 2; done; mc mb --ignore-existing local/handl-documents; mc anonymous set none local/handl-documents"]
+    command: ["until mc alias set local http://minio:9000 minioadmin minioadmin; do sleep 2; done; mc mb --ignore-existing local/parsec-documents; mc anonymous set none local/parsec-documents"]
   api:
     build: ./backend
     env_file:

@@ -1,7 +1,7 @@
 [project]
-name = "handl-parse"
+name = "parsec"
 version = "0.1.0"
-description = "Parse (Handl Parse) document intelligence API"
+description = "Parsec document intelligence API"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1", "pydantic-settings>=2.7,<3",

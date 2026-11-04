@@ -7,13 +7,10 @@ import {
 } from "lucide-react";
 import { ProductIcon } from "./ProductIcons";
 
-export function ParseLogo() {
+export function ParsecLogo() {
   return (
-    <div className="flex items-baseline gap-1.5" aria-label="Parse by Handl">
-      <span className="text-[18px] font-semibold tracking-[-.04em]">Parse</span>
-      <span className="hidden text-[10px] text-ink-soft sm:inline">
-        by Handl
-      </span>
+    <div className="flex items-baseline gap-1.5" aria-label="Parsec">
+      <span className="text-[18px] font-semibold tracking-[-.04em]">Parsec</span>
     </div>
   );
 }

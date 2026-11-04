@@ -36,7 +36,7 @@ Authenticated:
 ## 3. App shell
 
 Sidebar:
-- HANDL Document Intelligence logo/name
+- Parsec logo/name
 - Dashboard
 - Documents
 - Processors
