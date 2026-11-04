@@ -15,3 +15,9 @@ frontend/dist/
 uploads/
 tmp/
 .DS_Store
+
+# Local AI / build planning docs — keep off GitHub
+context_docs/
+DECISIONS.md
+frontend/DESIGN_SYSTEM.md
+

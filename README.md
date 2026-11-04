@@ -55,9 +55,8 @@ PDF, PNG, JPEG, TIFF, WEBP, DOCX, XLSX, PPTX, HTML, CSV, Markdown, and plain tex
 
 - `frontend/`: React, TypeScript, Vite, React Router, TanStack Query, React Hook Form/Zod, Tailwind, react-pdf.
 - `backend/`: FastAPI, Pydantic v2, SQLAlchemy async, Alembic, PostgreSQL, Celery/Redis, S3/MinIO, Docling/PyMuPDF, provider abstraction.
-- `context_docs/`: product and engineering source specifications.
 
-Parsing and AI calls never run in the HTTP process. Processor publications and extraction runs are immutable. All tenant resources are scoped through an authenticated workspace context.
+Document processing is asynchronous: the API accepts uploads and enqueues work; Celery workers parse (Docling/PyMuPDF, with OCR when needed), extract into a processor schema, validate, and score confidence. Humans can review evidence-backed fields before approval and export. Processor publications and extraction runs are immutable. All tenant resources are scoped through an authenticated workspace context.
 
 ## API quick start
 
