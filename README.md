@@ -2,6 +2,32 @@
 
 Parsec is a multi-tenant document intelligence application that turns PDFs, images, Office files, and text documents into schema-conforming, evidence-backed data with validation and human review.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/02-overview.png" alt="Parsec overview dashboard" width="900" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/03-processors.png" alt="Parsec processors" width="440" />
+  &nbsp;
+  <img src="docs/screenshots/05-upload.png" alt="Parsec document upload" width="440" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/07-processor-editor.png" alt="Parsec processor editor" width="440" />
+  &nbsp;
+  <img src="docs/screenshots/06-api.png" alt="Parsec API and webhooks" width="440" />
+</p>
+
+<details>
+<summary>More screens</summary>
+
+- Sign in: `docs/screenshots/01-sign-in.png`
+- Documents: `docs/screenshots/04-documents.png`
+
+</details>
+
 ## Run locally
 
 Prerequisite: Docker Desktop with Compose v2.
